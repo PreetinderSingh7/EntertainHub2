@@ -92,7 +92,7 @@ const AuthModal = ({ isOpen, onClose, showToast }) => {
     setRegisterData((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleLoginSubmit = async (e) => {
+ const handleLoginSubmit = async (e) => {
   e.preventDefault();
 
   if (!validateEmail(loginData.email)) {
@@ -107,24 +107,12 @@ const AuthModal = ({ isOpen, onClose, showToast }) => {
         email: loginData.email,
         password: loginData.password,
       },
-      { withCredentials: true }
+      { withCredentials: true } // 👈 Sends and receives cookies
     );
 
-    const token = Cookies.get('token');
-
-    if (token) {
-      const decoded = jwtDecode(token);
-
-      if (decoded?.email === loginData.email) {
-        toast.success('Successfully logged in!');
-        animateClose();
-        nav('/main2');
-      } else {
-        toast.error('Invalid token received');
-      }
-    } else {
-      toast.error('Login failed: Token not set by server');
-    }
+    toast.success('Successfully logged in!');
+    animateClose();
+    nav('/main2'); // 👈 Redirect after login
   } catch (error) {
     toast.error(
       error.response?.data?.message || 'Login failed. Wrong username or password.'
