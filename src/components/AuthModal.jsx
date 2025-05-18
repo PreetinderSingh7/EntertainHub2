@@ -92,7 +92,7 @@ const AuthModal = ({ isOpen, onClose, showToast }) => {
     setRegisterData((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleLoginSubmit = async (e) => {
+ const handleLoginSubmit = async (e) => {
   e.preventDefault();
 
   if (!validateEmail(loginData.email)) {
@@ -102,28 +102,17 @@ const AuthModal = ({ isOpen, onClose, showToast }) => {
 
   try {
     const response = await axios.post(
-      'http://localhost:4001/api/user/login',
+      'https://entertainhub2-backend.onrender.com/api/user/login',
       {
         email: loginData.email,
         password: loginData.password,
       },
-      { withCredentials: true }
+  
     );
-
-    const token = Cookies.get('token');
-
-    if (token) {
-      const decoded = jwtDecode(token);
-
-      if (decoded?.email === loginData.email) {
-        toast.success('Successfully logged in!');
-        animateClose();
-        nav('/main2');
-      } else {
-        toast.error('Invalid token received');
-      }
-    } else {
-      toast.error('Login failed: Token not set by server');
+    if(response.data.message === 'Login successful') {
+       toast.success('Successfully logged in!');
+    animateClose();
+    nav('/main2')
     }
   } catch (error) {
     toast.error(
@@ -159,7 +148,7 @@ const handleRegisterSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      'http://localhost:4001/api/user/signup',
+      'https://entertainhub2-backend.onrender.com/api/user/signup',
       {
         name: username,
         email,
