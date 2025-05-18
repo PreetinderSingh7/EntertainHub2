@@ -102,7 +102,7 @@ const AuthModal = ({ isOpen, onClose, showToast }) => {
 
   try {
     const response = await axios.post(
-      'http://localhost:4001/api/user/login',
+      'https://entertainhub2-backend.onrender.com/api/user/login',
       {
         email: loginData.email,
         password: loginData.password,
@@ -159,7 +159,7 @@ const handleRegisterSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      'http://localhost:4001/api/user/signup',
+      'https://entertainhub2-backend.onrender.com/api/user/signup',
       {
         name: username,
         email,

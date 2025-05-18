@@ -10,7 +10,7 @@ const Sidebar = ({ isActive, onProfileClick, onNavigate, activeSection }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:4001/api/user/logout', {}, {
+      const response = await axios.post('https://entertainhub2-backend.onrender.com/api/user/logout', {}, {
         withCredentials: true, // Include cookies in the request
       });
 
