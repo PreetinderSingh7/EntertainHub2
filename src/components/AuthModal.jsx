@@ -107,12 +107,13 @@ const AuthModal = ({ isOpen, onClose, showToast }) => {
         email: loginData.email,
         password: loginData.password,
       },
-      { withCredentials: true } // 👈 Sends and receives cookies
+  
     );
-
-    toast.success('Successfully logged in!');
+    if(response.data.message === 'Login successful') {
+       toast.success('Successfully logged in!');
     animateClose();
-    nav('/main2'); // 👈 Redirect after login
+    nav('/main2')
+    }
   } catch (error) {
     toast.error(
       error.response?.data?.message || 'Login failed. Wrong username or password.'
