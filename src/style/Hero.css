@@ -1,0 +1,73 @@
+.hero-container {
+  background-image: "url('nightclub-equipment-mixing-technology-for-modern-entertainment-club-performance-space-generated-by-ai-free-photo.jpg')";
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, #0a0a0a 80%);
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    max-width: 800px;
+    color: #f0f0f0;
+    position: relative;
+  }
+  
+  .hero .sign-in-btn {
+    background: rgb(238, 163, 24);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    position: relative;
+  }
+  
+  .hero .sign-in-btn:hover {
+    background: #FF0F1A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+  }
+  
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+    }
+  }

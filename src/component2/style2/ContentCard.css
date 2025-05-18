@@ -1,0 +1,131 @@
+/* ContentCard.css */
+.content-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.content-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Image effects */
+.card-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.content-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Overlay effect on hover */
+.card-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(139, 92, 246, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.content-card:hover .card-image-container::after {
+  opacity: 1;
+}
+
+/* Content animation */
+.card-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.content-card:hover .card-content {
+  transform: translateY(-5px);
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.content-card:hover .card-content h3 {
+  color: rgba(139, 92, 246, 1);
+}
+
+.card-content p {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+/* Glow effect */
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  transition: box-shadow 0.5s ease;
+  z-index: -1;
+}
+
+.content-card:hover::before {
+  box-shadow: 0 0 25px 3px rgba(139, 92, 246, 0.4);
+}
+
+/* Add a subtle shine effect */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.content-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: all 0.75s ease;
+  opacity: 0;
+}
+
+.content-card:hover::after {
+  animation: shine 1.5s ease;
+  opacity: 1;
+}

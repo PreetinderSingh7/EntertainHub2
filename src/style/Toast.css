@@ -1,0 +1,18 @@
+/* Toast.css */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(25, 25, 25, 1);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    min-width: 250px;
+    text-align: center;
+    }
+    
+    

@@ -1,0 +1,41 @@
+.featured-content {
+    padding: 100px 50px;
+    background: linear-gradient(to top, #0a0a0a, #141414);
+  }
+  
+  .featured-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    color: white;
+  }
+  
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .featured-grid img {
+    width: 100%; /* Ensures the image spans the full width of its container */
+    height: auto; /* Maintains the aspect ratio */
+    border-radius: 10px; /* Adds subtle rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+  }
+  
+  .featured-grid img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhances shadow on hover */
+  }
+  
+  @media (max-width: 768px) {
+    .featured-content {
+      padding: 50px 20px;
+    }
+    
+    .featured-content h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+  }

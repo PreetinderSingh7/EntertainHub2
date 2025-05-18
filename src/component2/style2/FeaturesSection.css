@@ -1,0 +1,250 @@
+/* Enhanced FeaturesSection.css with advanced animations */
+
+.features-section {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  padding: 60px 20px;
+  transition: opacity 0.3s ease;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #2196f3, #e91e63);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(45deg, #2196f3, #e91e63);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+  perspective: 1000px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  will-change: transform, box-shadow, background;
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card hover effects */
+.feature-card:hover, .feature-card.hovered {
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Shiny effect on hover */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.8s, opacity 0.8s;
+}
+
+.feature-card:hover .card-shine, .feature-card.hovered .card-shine {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+/* Border animation */
+.card-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+
+.feature-card:hover .card-border, .feature-card.hovered .card-border {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Icon styling and animations */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+  stroke: #2196f3;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px rgba(33, 150, 243, 0.5));
+}
+
+.icon-container {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+}
+
+.icon-backdrop {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(33, 150, 243, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.5s ease;
+}
+
+.feature-card:hover .icon-container, .feature-card.hovered .icon-container {
+  transform: scale(1.1) translateY(-5px);
+}
+
+.feature-card:hover .feature-icon, .feature-card.hovered .feature-icon {
+  stroke: #ffffff;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+.feature-card:hover .icon-backdrop, .feature-card.hovered .icon-backdrop {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card:hover h3, .feature-card.hovered h3 {
+  transform: translateY(-5px);
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card:hover p, .feature-card.hovered p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-link {
+  display: block;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Force visibility for the features section */
+#features, #features-content {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Animation for feature cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.feature-card {
+  animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  opacity: 0;
+}
+
+.feature-grid .feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-grid .feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-grid .feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-grid .feature-card:nth-child(4) { animation-delay: 0.4s; }
+.feature-grid .feature-card:nth-child(5) { animation-delay: 0.5s; }
+.feature-grid .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Additional hover animation for icons */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.feature-card:hover .feature-icon, .feature-card.hovered .feature-icon {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  
+  .feature-card {
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
