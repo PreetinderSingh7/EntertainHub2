@@ -63,7 +63,7 @@ const WhackAMole = () => {
       
       // Update score
       const pointsEarned = 10 + (Math.floor(consecutiveHits / 2) * 5);
-      setScore(score + pointsEarned);
+      setScore(prevScore => prevScore + pointsEarned);
       
       // Update consecutive hits
       const newConsecutiveHits = consecutiveHits + 1;
@@ -132,59 +132,69 @@ const WhackAMole = () => {
     return holes;
   };
 
+  // Fix for starting game after it's already active
+  useEffect(() => {
+    return () => {
+      clearInterval(timerRef.current);
+      clearTimeout(moleTimerRef.current);
+    };
+  }, []);
+
   return (
-    <div className="w-full max-w-md mx-auto p-4 bg-white rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">Whack-A-Mole</h2>
-      
-      <div className="flex justify-between items-center mb-4">
-        <div className="text-gray-700">
-          <div className="font-bold">Score: {score}</div>
-          {highScore > 0 && <div className="text-sm">High Score: {highScore}</div>}
-        </div>
+    <div className="flex justify-center items-center w-full h-full">
+      <div className="w-full max-w-md mx-auto p-4 bg-white rounded-xl shadow-md">
+        <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">Whack-A-Mole</h2>
         
-        {gameActive ? (
-          <div className={`font-bold ${timeLeft <= 10 ? 'text-red-500' : 'text-blue-600'}`}>
-            Time: {timeLeft}s
+        <div className="flex justify-between items-center mb-4">
+          <div className="text-gray-700">
+            <div className="font-bold">Score: {score}</div>
+            {highScore > 0 && <div className="text-sm">High Score: {highScore}</div>}
           </div>
-        ) : (
-          <button
-            onClick={startGame}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
-          >
-            {score > 0 ? 'Play Again' : 'Start Game'}
-          </button>
-        )}
-      </div>
-      
-      {gameActive && (
-        <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-          <div 
-            className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
-            style={{ width: `${(timeLeft / 30) * 100}%` }}
-          ></div>
-        </div>
-      )}
-      
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {renderMoleHoles()}
-      </div>
-      
-      {!gameActive && score > 0 && (
-        <div className="text-center mt-4">
-          <h3 className="text-xl font-bold">Game Over!</h3>
-          <p className="text-lg">Your score: {score}</p>
-          {score === highScore && score > 0 && (
-            <p className="text-sm text-green-600 font-bold">New High Score!</p>
+          
+          {gameActive ? (
+            <div className={`font-bold ${timeLeft <= 10 ? 'text-red-500' : 'text-blue-600'}`}>
+              Time: {timeLeft}s
+            </div>
+          ) : (
+            <button
+              onClick={startGame}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+            >
+              {score > 0 ? 'Play Again' : 'Start Game'}
+            </button>
           )}
         </div>
-      )}
-      
-      {!gameActive && (
-        <div className="text-center mt-2 text-sm text-gray-600">
-          <p>Click on the moles as they appear to whack them!</p>
-          <p>Consecutive hits earn bonus points and make the game faster.</p>
+        
+        {gameActive && (
+          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+            <div 
+              className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
+              style={{ width: `${(timeLeft / 30) * 100}%` }}
+            ></div>
+          </div>
+        )}
+        
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          {renderMoleHoles()}
         </div>
-      )}
+        
+        {!gameActive && score > 0 && (
+          <div className="text-center mt-4">
+            <h3 className="text-xl font-bold">Game Over!</h3>
+            <p className="text-lg">Your score: {score}</p>
+            {score === highScore && score > 0 && (
+              <p className="text-sm text-green-600 font-bold">New High Score!</p>
+            )}
+          </div>
+        )}
+        
+        {!gameActive && (
+          <div className="text-center mt-2 text-sm text-gray-600">
+            <p>Click on the moles as they appear to whack them!</p>
+            <p>Consecutive hits earn bonus points and make the game faster.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
