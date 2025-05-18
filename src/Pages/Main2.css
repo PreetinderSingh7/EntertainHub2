@@ -1,0 +1,262 @@
+ /* App.css - Main styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  /* Modern Entertainment Platform Styles - Neon Cyberpunk Theme */
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+:root {
+  /* Core Theme Colors */
+  --primary: #00f2ff;
+  --primary-dark: #00c6d3;
+  --primary-light: #7fffff;
+  --secondary: #ff00e4;
+  --secondary-dark: #c400aa;
+  --accent: #ffcc00;
+  
+  /* UI Colors */
+  --dark: #080b14;
+  --darker: #050709;
+  --dark-glass: rgba(8, 11, 20, 0.8);
+  --light: #f0f0f0;
+  --light-glass: rgba(240, 240, 240, 0.1);
+  --surface: #0f1523;
+  --surface-hover: #151c2e;
+  --sidebar-width: 280px;
+  
+  /* Effects */
+  --neon-glow: 0 0 10px rgba(0, 242, 255, 0.7), 0 0 20px rgba(0, 242, 255, 0.5), 0 0 30px rgba(0, 242, 255, 0.3);
+  --pink-glow: 0 0 10px rgba(255, 0, 228, 0.7), 0 0 20px rgba(255, 0, 228, 0.5), 0 0 30px rgba(255, 0, 228, 0.3);
+  --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --sharp-transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Theme Classes */
+.theme-dark {
+  --bg-primary: var(--dark);
+  --bg-secondary: var(--surface);
+  --text-primary: var(--light);
+  --text-secondary: rgba(240, 240, 240, 0.7);
+  --text-muted: rgba(240, 240, 240, 0.5);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-light {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f0f4fa;
+  --text-primary: #16192a;
+  --text-secondary: #3a3f53;
+  --text-muted: #6e7386;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: background 0.3s ease;
+}
+
+  
+  /* :root {
+    --primary: orange;
+    --secondary: #10B981;
+    --dark: rgb(0, 0, 0);
+    --light: #F3F4F6;
+    --sidebar-width: 280px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gray: #000000;
+    --surface: #111316;
+  } */
+  
+  /* Theme Classes */
+  /* .theme-dark {
+    --bg-primary: var(--dark);
+    --bg-secondary: var(--surface);
+    --text-primary: var(--light);
+    --text-secondary: var(--gray);
+  }
+  
+  .theme-light {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F1F5F9;
+    --text-primary: #1b1c1e;
+    --text-secondary: #000000;
+  }
+  
+  body {
+    background: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+    min-height: 100vh;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;    
+  }
+   */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 1rem;
+    margin-left: 0;
+    transition: var(--transition);
+    min-height: 100vh;
+  }
+  
+  .main-content.shifted {
+    margin-left: var(--sidebar-width);
+  }
+  
+  /* Section Styling */
+  .section {
+    padding: 4rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    text-align: center;
+  }
+  
+  /* Feature Grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* News Grid */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+    }
+  
+    .section-title {
+      font-size: 1.8rem;
+    }
+  
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* News Grid Additional Styles */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .news-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: var(--transition);
+  }
+  
+  .news-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .news-card-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .news-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .news-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+  }
+  
+  .news-content p {
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .card-footer small {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .card-footer a {
+    color: var(--secondary);
+    text-decoration: none;
+  }
+  
+  .card-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .loading, .error {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .error {
+    color: #dc3545;
+  }
